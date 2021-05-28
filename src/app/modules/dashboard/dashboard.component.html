@@ -1,0 +1,139 @@
+<body>
+
+  <div class="row">
+    <div id="app" class="col-sm">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://image.flaticon.com/icons/png/128/992/992651.png" alt="Avatar"
+              style="width:100px;height:100x;margin-top: 20px;">
+            <h1 style="margin-top: 2px;">Add board</h1>
+          </div>
+          <div class="flip-card-back">
+            <button class="btn" (click)="adddash()" style="width:auto;">
+
+              <h1>ADD</h1>
+              <p>//Random ID</p>
+              <p>Description</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="joinbut" (click)="openForm()">Join board</button>
+      <div class="form-popup" id="myForm">
+        <form #joinedash="ngForm" class="form-container">
+          <h1>Join board</h1>
+
+          <label ><b>Name</b></label>
+          <input type="text" placeholder="Enter Board name..." name="boardname" required ngModel>
+
+          <label ><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="boardpass" required ngModel>
+
+          <button type="submit" class="btn"(click)="joinexistingdash(joinedash.value)">joinnn</button>
+          <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+        </form>
+      </div>
+
+
+
+
+    </div>
+    <div id="myelement" class="col-sm">
+      <h5>Own board:</h5>
+      <div *ngFor="let dash of dashboard">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://image.flaticon.com/icons/png/128/2781/2781997.png" alt="Avatar"
+                style="width:70px;height:70x;margin-top: 20px;">
+              <h1 style="margin-top: 4px;">{{dash.Board_name}}</h1>
+              <h3>{{dash.Board_discription}}</h3>
+            </div>
+            <div class="flip-card-back">
+              <button type="button" id={{dash.Board_name}} class="btn-success" (click)="joindash($event)">JOIN</button>
+              <button  type="button" class="btn-danger"  id={{dash.Board_name}} (click)="deletedash($event)">DELETE</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div id="myconelement" class="col-sm">
+      <h5>Joined boards:</h5>
+      <div *ngFor="let dash of joinedboards">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://image.flaticon.com/icons/png/128/2781/2781997.png" alt="Avatar"
+                style="width:70px;height:70x;margin-top: 20px;">
+              <h1 style="margin-top: 4px;">{{dash.Board_name}}</h1>
+              <h3>{{dash.Board_discription}}</h3>
+            </div>
+            <div class="flip-card-back">
+              <button type="button" id={{dash.Board_name}} class="btn-success" (click)="joindash($event)">JOIN</button>
+              <button type="button" class="btn-danger"  >V</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div id="id01" class="modal">
+
+    <form class="modal-content animate" #addDashboard="ngForm">
+
+
+      <label><b>Dashboard Name <br>( Name is unique attribut to each Dashboard)</b></label>
+      <input #username="ngModel"  type="name" placeholder="Enter Dashboard Name" name="dash_name" minlength= "7" required ngModel>
+      <span *ngIf="username.invalid" class="error">Name must have a minimum of 7 and ends with "".org""</span>
+
+      <label><b>Description</b></label>
+      <input  #discription="ngModel" type="text" placeholder="Enter Dashboard description..." name="dash_description" minlength= "20" style="height: 100px;"
+        required ngModel>
+        <span *ngIf="discription.invalid" class="error">Discription must have a minimum of 20 </span>
+
+      <label><b>Password</b></label>
+      <input id="password" type="password" #password="ngModel" placeholder="Enter Password" name="dash_psw"
+        minlength="7" required ngModel>
+      <span *ngIf="password.invalid && password.touched" class="error">Password must have a minimum of 7
+        characteres</span>
+      <span *ngIf="password.valid" class="succes">Password Approved</span>
+
+
+      <label><b>Confirm password</b></label>
+      <input id="passwordconfirm" type="password" placeholder="Enter Password" #password="ngModel" name="con_dash_psw"
+        required ngModel>
+
+
+
+      <button type="submit" [disabled]="addDashboard.invalid" (click)="adddashb(addDashboard.value)">Add</button>
+
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+          class="cancelbtn">Cancel</button>
+
+      </div>
+    </form>
+
+
+  
+
+
+
+
+
+
+
+
+  </div>
+</body>

@@ -1,0 +1,255 @@
+body{
+    border:none;
+    background: white;
+    margin: 1%;
+    margin-left: 3.5%;
+    margin-right: 40%;
+    width: 95%;
+    min-height:100vh;
+    border-radius: 5px;
+    box-shadow:  10px 10px 10px 10px  gray; 
+}
+/* Add a black background color to the top navigation bar */
+.topnav {
+
+    overflow: hidden;
+    background-color: #e9e9e9;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav button {
+border: solid gray 0.1px;
+  margin-bottom: 0.5%;
+  margin-top: 0.5%;
+  margin-left: 10px;
+   margin-right:20px ;
+  }
+  .topnav button img{
+    margin: 5px;
+      height: 40px;
+      width: 40px;
+   
+  
+}
+
+.topnav button:hover {
+    
+    box-shadow: 5px 10px 5px #12232E;
+    z-index: 1000;
+    transition: 1s;
+    }
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the "active" element to highlight the current page */
+  .topnav a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  /* Style the search box inside the navigation bar */
+ .search{
+margin-top: 1.5%;
+ }
+
+  /* popup */
+  #container {
+      z-index: 1111;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+   
+    display: none;
+   
+}
+
+.reveal-modal {
+    position: relative;
+    margin: 0 auto;
+    top: 25%;
+}
+.addfile{ 
+    border-radius: 10px;
+    border: solid white 0.5px;
+    color: white;
+    margin-left: 30%;
+    background:#12232E;
+
+  width:500px;
+  height: 200px;
+}
+#elements{
+    display: none;
+    text-align: center;
+    margin: 20px;
+}
+#elementsm{
+    display: none;
+    text-align: center;
+    margin: 20px;
+}
+#elementsf{
+    display: none;
+    text-align: center;
+    margin: 20px;
+}
+
+    /* Remove the left: 50% */
+  /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+  @media screen and (max-width: 600px) {
+      body{
+          margin-left:20%;
+      }
+    .topnav a, .topnav input[type=text] {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+   
+  }
+  .path{
+
+    color: lightgray;
+    background: grey;
+  }
+.file{
+margin-left: 20px;
+position: relative;
+  display: inline-block;
+
+}
+.folder {
+  margin-left: 20px;
+  position: relative;
+    display: inline-block;
+
+}
+.folder h3 {
+  font-weight: 900;
+
+}
+.file h3{
+  font-weight: 900;
+}
+.openfile{
+  background-color: none;
+}
+.file .tooltiptext{
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px ;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -130px;
+
+}
+
+.file .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+.file:hover .tooltiptext{
+   transition-delay: 1s;
+  visibility: visible;
+
+
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+.modal-content button{
+  margin: 5px;
+  box-shadow:5px 5px 5px gray ;
+
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.folder button{
+  height: 110px;
+  width: 110px;
+background-image: url("https://image.flaticon.com/icons/png/128/716/716784.png");
+background-repeat: no-repeat;
+background-size: 100px 100px;
+
+}
+.file button{
+  height: 110px;
+  width: 110px;
+background-image: url("https://image.flaticon.com/icons/png/128/2965/2965335.png");
+background-repeat: no-repeat;
+background-size: 100px 100px;
+}
+#loading{
+ text-align: center;
+
+}
+#loading img {
+  width: 300px;
+  height: 300px;
+}
+#pdf{
+
+ background: beige;
+margin: 60px;
+margin-top: 10px;
+  display: none;
+  border: solid lightgray 1px;
+  border-radius: 10px;
+  box-shadow:5px 5xp 5px  lightslategrey;
+}
+#pdf p {
+  margin : 20px;
+}
+#pdf button{
+  margin: 10px;
+}

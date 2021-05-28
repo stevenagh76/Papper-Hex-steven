@@ -1,0 +1,125 @@
+<body id="body">
+  <div class="topnav">
+    <button class="btn" id="asdd" (click)="popadd($event)"><img
+        src="https://image.flaticon.com/icons/png/128/633/633585.png"> Add file</button>
+    <button class="btn" id="mult" (click)="popadd($event)"><img
+        src="https://image.flaticon.com/icons/png/128/2541/2541979.png"> Add multiple Files</button>
+    <button class="btn" id="folder" (click)="popadd($event)"><img
+        src="https://image.flaticon.com/icons/png/128/716/716784.png"> Create folder</button>
+
+
+
+    <div class="search" style="float: right;">
+      <input   #newHero 
+  
+      placeholder="Search.." 
+     >
+      <button (click)="addHero(newHero.value)" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+
+
+  <div id="container">
+    <div id="exampleModal" class="reveal-modal">
+      <form class="addfile">
+        <div id="elements">
+          <h1>Add Single File</h1>
+          <input type="file" name="image" (change)="selectImage($event)" />
+
+          <hr>
+
+          <button type="submit" class="btn btn-success" (click)="onSubmit()">Upload</button>
+          <button type="submit" class="btn btn-danger" (click)="close()">Cancel</button>
+        </div>
+        <div id="elementsm">
+          <h1>Add Multiple Files</h1>
+          <input type="file" name="image" (change)="selectMultipleImage($event)" />
+
+          <hr>
+
+          <button type="submit" class="btn btn-success" (click)="onMultipleSubmit()">Upload</button>
+          <button type="submit" class="btn btn-danger" (click)="close()">Cancel</button>
+        </div>
+
+        <div id="elementsf">
+          <h1>Create Folder</h1>
+          <label>Foldername:</label>
+          <form #folderpost="ngForm">
+          <input id="foldername" type="text" name="foldername" placeholder="Enter Folder name..." ngModel/>
+          <hr>
+          <button type="submit" class="btn btn-success" (click)="Createfolder(folderpost.value)">Create Folder</button>
+          <button type="submit" class="btn btn-danger" (click)="close()">Cancel</button>
+          </form>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <div class="path">
+    <h3>  localhost:Default/...</h3>
+  </div>
+  
+ 
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+  
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" (click)="closed()">&times;</span>
+      <button class="btn btn-success" (click)="gotoViewport()">Open and Edit</button>
+      <button class="btn btn-warning" (click)="preformocr()">Preform OCR</button>
+      <button class="btn btn-danger" (click)="deletFile()">Delete File</button>
+      
+    </div>
+  
+  </div>
+
+  <div class="row">
+    <div class="col-sm col-sm col-sm col-sm col-sm col-sm" *ngFor="let folder of folder">
+      <div class="folder">
+      <button type="button" id="{{file.Originalname}}" class="btn openfile"></button>
+     <h3>{{folder.folder_name}}</h3> 
+    </div>
+  </div>
+   </div>
+
+
+
+  <div class="row" >
+    <div class="col-sm col-sm col-sm col-sm col-sm col-sm" *ngFor="let file of file">
+      <div class="file">
+        <span class="tooltiptext">Path:{{file.Path}}, Size:{{file.Size}}kb</span>
+      <button type="button" id="{{file.Originalname}}" class="btn openfile" (click)="openfile($event)"></button>
+     <h3>{{file.Originalname}}</h3> 
+    </div>
+  </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<div id='pdf'>
+  <p>
+{{pdf | json}}
+  </p>
+
+<button class="btn btn-success" (click)="Download()">Save to server as PDF</button>
+<button class="btn btn-danger" (click)="goback()" >cancel</button>
+
+</div>
+
+<div id="loading">
+  <img src="https://cdn.dribbble.com/users/1186261/screenshots/3718681/_______.gif" alt="">
+  <h1>Please waite ...</h1>
+  <h2>OCR will take from 2 to 5 minutes depending on the fiel size.</h2>
+</div>

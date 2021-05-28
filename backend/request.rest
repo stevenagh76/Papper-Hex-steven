@@ -1,0 +1,22 @@
+GET http://localhost:3000/users/userinformation
+
+###
+
+POST http://localhost:3000/users/joinowndash
+Content-Type: application/json
+
+
+
+###
+POST http://localhost:3000/users/changepass
+Content-Type: application/json
+
+{
+
+  "currentpas": "76318864",
+  "newpass": "03250748"
+   
+}
+###
+POST http://localhost:3000/pdf
+Content-Type: application/json
